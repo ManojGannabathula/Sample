@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License. -->
 <!DOCTYPE html>
 <head>
-    <title>Google Cloud TTS: EPG Demo</title>
+    <title>Google Cloud Name Pronounciation Demo</title>
 
     <link rel="stylesheet" type="text/css" href="third_party/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/custom.css">
@@ -37,9 +37,11 @@ limitations under the License. -->
                     'success': function (data) {
                         epgItems = data;
 			 $.each(data.employees, function(i, f) {
-			  var tblRow = "<tr>" + "<td>" + f.id + "</td>" +
-			   "<td>" + f.firstname + "</td>" + "<td>" + f.lastname + "</td>" + "<td>" + f.preferredname + "</td>"
-			   + "<td>" + "<button>Edit</button>" + "   " + "<button>Delete</button>" + "</td>" + "</tr>";
+			 var tblRow = '<tr>' + '<td>' + '<div class="contains-voicable-content"><span class="my-auto voicable-item">' + f.id +'</span></div>' + '</td>' +
+			   "<td>" + '<div class="contains-voicable-content"><span class="my-auto voicable-item">' + f.firstname +'</span></div>' + "</td>" + 
+			   "<td>" + '<div class="contains-voicable-content"><span class="my-auto voicable-item">' + f.lastname +'</span></div>' + "</td>" + 
+			   "<td>" + '<div class="contains-voicable-content"><span class="my-auto voicable-item">' + f.preferredname +'</span></div>' + "</td>"
+			   "</tr>";
 			   $(tblRow).appendTo(".leadstable tbody"); });
                     },
                     'error': function (data, error) {
@@ -49,15 +51,6 @@ limitations under the License. -->
                 return epgItems
 
             })(); 
-
-            // Define descriptionMap that is used for looking up the EPG Item description
-            let descriptionMap = new Map()
-
-            // Loop through all items with the epg-content-title class, and assign them a entry from epgItems. Also add the description to the descriptionMap
-            $( ".epg-content-title" ).each(function( index ) {
-                    $( this ).text(Object.keys(epgItems.epgItems[index])[0])
-                    descriptionMap[Object.keys(epgItems.epgItems[index])[0]] = Object.values(epgItems.epgItems[index])[0]
-            });
 
             // Synthesize audio
             $(".contains-voicable-content").on('click', function(event){
@@ -165,7 +158,7 @@ limitations under the License. -->
           <div class="row">
               <div class="col-12">
                 <h1>Name Pronunciation Demo</h1>
-                <p class="lead">This site provides a demo of Name Pronounciation</a></p>
+                <p class="lead">This site provides a demo of Name Pronounciation. Clicking on any cell in below table plays the pronounciation. </a></p>
               </div>
             
           </div>
@@ -179,78 +172,14 @@ limitations under the License. -->
           <col width="200">
 
       <thead>
-        <th>Employee ID</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Preferred Name</th>
-        <th>Action</th>
+        <th><div class="contains-voicable-content epg-title d-flex justify-content-center"><span class="my-auto voicable-item">Employee ID</span></div></th>
+        <th><div class="contains-voicable-content epg-title d-flex justify-content-center"><span class="my-auto voicable-item">First Name</span></div></th>
+        <th><div class="contains-voicable-content epg-title d-flex justify-content-center"><span class="my-auto voicable-item">Last Name</span></div></th>
+        <th><div class="contains-voicable-content epg-title d-flex justify-content-center"><span class="my-auto voicable-item">Preferred Name</span></div></th>
       </thead>
       <tbody id="tdata">
       </tbody>
       </table>
-
-      <!--
-	  <div class="container reduced-margin mt-4">
-          <div class="epg-container">
-            <div class="d-flex flex-row epg-row">
-                <div class="contains-voicable-content col-1 epg-title d-flex justify-content-center"><span class="my-auto voicable-item">Channel</span></div>
-                <div class="contains-voicable-content col-1 epg-title d-flex justify-content-center"><span class="my-auto voicable-item">13:00-14:00</span></div>
-                <div class="contains-voicable-content col-1 epg-title d-flex justify-content-center"><span class="my-auto voicable-item">14:00-15:00</span></div>
-                <div class="contains-voicable-content col-1 epg-title d-flex justify-content-center"><span class="my-auto voicable-item">15:00-16:00</span></div>
-                <div class="contains-voicable-content col-1 epg-title d-flex justify-content-center"><span class="my-auto voicable-item">16:00-17:00</span></div>
-                <div class="contains-voicable-content col-1 epg-title d-flex justify-content-center"><span class="my-auto voicable-item">17:00-18:00</span></div>
-                <div class="contains-voicable-content col-1 epg-title d-flex justify-content-center"><span class="my-auto voicable-item">18:00-19:00</span></div>
-                <div class="contains-voicable-content col-1 epg-title d-flex justify-content-center"><span class="my-auto voicable-item">19:00-20:00</span></div>
-                <div class="contains-voicable-content col-1 epg-title d-flex justify-content-center"><span class="my-auto voicable-item">20:00-21:00</span></div>
-                <div class="contains-voicable-content col-1 epg-title d-flex justify-content-center"><span class="my-auto voicable-item">21:00-22:00</span></div>
-                <div class="contains-voicable-content col-1 epg-title d-flex justify-content-center"><span class="my-auto voicable-item">22:00-23:00</span></div>
-                <div class="contains-voicable-content col-1 epg-title d-flex justify-content-center"><span class="my-auto voicable-item">23:00-24:00</span></div>
-            </div>
-            <div class="d-flex flex-row epg-row">
-                <div class="contains-voicable-content col-1 epg-heading d-flex justify-content-center"><span class="my-auto voicable-item">BBC One</span></div>
-                <div class="contains-voicable-content contains-item-with-description col-3 schedule-item d-flex"><span class="my-auto voicable-item epg-content-title"></span></div>
-                <div class="contains-voicable-content contains-item-with-description col-4 schedule-item d-flex"><span class="my-auto voicable-item epg-content-title"></span></div>
-                <div class="contains-voicable-content contains-item-with-description col-4 schedule-item d-flex"><span class="my-auto voicable-item epg-content-title"></span></div>
-            </div>
-            <div class="d-flex flex-row epg-row">
-                <div class="contains-voicable-content col-1 epg-heading d-flex justify-content-center"><span class="my-auto voicable-item">BBC Two</span></div>
-                <div class="contains-voicable-content contains-item-with-description col-2 schedule-item d-flex"><span class="my-auto voicable-item epg-content-title"></span></div>
-                <div class="contains-voicable-content contains-item-with-description col-2 schedule-item d-flex"><span class="my-auto voicable-item epg-content-title"></span></div>
-                <div class="contains-voicable-content contains-item-with-description col-3 schedule-item d-flex"><span class="my-auto voicable-item epg-content-title"></span></div>
-                <div class="contains-voicable-content contains-item-with-description col-2 schedule-item d-flex"><span class="my-auto voicable-item epg-content-title"></span></div>
-                <div class="contains-voicable-content contains-item-with-description col-2 schedule-item d-flex"><span class="my-auto voicable-item epg-content-title"></span></div>
-            </div>
-            <div class="d-flex flex-row epg-row">
-                <div class="contains-voicable-content col-1 epg-heading d-flex justify-content-center"><span class="my-auto voicable-item">ITV 1</span></div>
-                <div class="contains-voicable-content contains-item-with-description col-3 schedule-item d-flex"><span class="my-auto voicable-item epg-content-title"></span></div>
-                <div class="contains-voicable-content contains-item-with-description col-2 schedule-item d-flex"><span class="my-auto voicable-item epg-content-title"></span></div>
-                <div class="contains-voicable-content contains-item-with-description col-1 schedule-item d-flex"><span class="my-auto voicable-item epg-content-title"></span></div>
-                <div class="contains-voicable-content contains-item-with-description col-2 schedule-item d-flex"><span class="my-auto voicable-item epg-content-title"></span></div>
-                <div class="contains-voicable-content contains-item-with-description col-3 schedule-item d-flex"><span class="my-auto voicable-item epg-content-title"></span></div>
-            </div>
-            <div class="d-flex flex-row epg-row"> 
-                <div class="contains-voicable-content col-1 epg-heading d-flex justify-content-center"><span class="my-auto voicable-item">Channel 4</span></div>
-                <div class="contains-voicable-content contains-item-with-description col-3 schedule-item d-flex"><span class="my-auto voicable-item epg-content-title"></span></div>
-                <div class="contains-voicable-content contains-item-with-description col-1 schedule-item d-flex"><span class="my-auto voicable-item epg-content-title"></span></div>
-                <div class="contains-voicable-content contains-item-with-description col-2 schedule-item d-flex"><span class="my-auto voicable-item epg-content-title"></span></div>
-                <div class="contains-voicable-content contains-item-with-description col-2 schedule-item d-flex"><span class="my-auto voicable-item epg-content-title"></span></div>
-                <div class="contains-voicable-content contains-item-with-description col-3 schedule-item d-flex"><span class="my-auto voicable-item epg-content-title"></span></div>
-            </div>
-            <div class="d-flex flex-row epg-row">
-                <div class="contains-voicable-content col-1 epg-heading d-flex justify-content-center"><span class="my-auto voicable-item">Channel 5</span></div>
-                <div class="contains-voicable-content contains-item-with-description col-1 schedule-item d-flex"><span class="my-auto voicable-item epg-content-title"></span></div>
-                <div class="contains-voicable-content contains-item-with-description col-2 schedule-item d-flex"><span class="my-auto voicable-item epg-content-title"></span></div>
-                <div class="contains-voicable-content contains-item-with-description col-3 schedule-item d-flex"><span class="my-auto voicable-item epg-content-title"></span></div>
-                <div class="contains-voicable-content contains-item-with-description col-4 schedule-item d-flex"><span class="my-auto voicable-item epg-content-title"></span></div>
-                <div class="contains-voicable-content contains-item-with-description col-1 schedule-item d-flex"><span class="my-auto voicable-item epg-content-title"></span></div>
-            </div>
-            <div class="d-flex flex-row description-row">
-                <div class="contains-voicable-content col-1 epg-heading d-flex justify-content-center"><span class="my-auto voicable-item">Description</span></div>
-                <div class="col-11 schedule-item d-flex description-content contains-voicable-content"><span id="content-description" class="my-auto voicable-item"> </span></div>
-            </div>
-          </div>
-      </div>
-	  -->
 
       <div class="container mt-4">
 
@@ -275,6 +204,8 @@ limitations under the License. -->
                 <td><select class="custom-select" id="voice-language">
                     <option selected="en-GB">en-GB</option>
                     <option value="en-US">en-US</option>
+		    <option value="hi-IN">hi-IN</option>
+		    <option value="fr-FR">fr-FR</option>
                   </select></td>
             </tr>
             <tr>
