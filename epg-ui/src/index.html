@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License. -->
 <!DOCTYPE html>
 <head>
-    <title>Google Cloud Name Pronounciation Demo</title>
+    <title>Name Pronounciation Demo</title>
 
     <link rel="stylesheet" type="text/css" href="third_party/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/custom.css">
@@ -159,7 +159,7 @@ limitations under the License. -->
               <div class="col-12">
                 <h1>Name Pronunciation Demo</h1>
                 <p class="lead">This site provides a demo of Name Pronounciation. Clicking on any cell in below table will play audio pronounciation. Voice language and Voice 
-			gender can based selected from the dropdown options. </a></p>
+			gender can selected from the dropdown options. </a></p>
               </div>
             
           </div>
@@ -195,8 +195,11 @@ limitations under the License. -->
                 <td><select class="custom-select" id="voice-language">
                     <option selected="en-GB">en-GB</option>
                     <option value="en-US">en-US</option>
+		    <option value="en-IN">en-IN</option>
 		    <option value="hi-IN">hi-IN</option>
 		    <option value="fr-FR">fr-FR</option>
+		    <option value="es-ES">es-ES</option>
+		    <option value="pt-PT">pt-PT</option>
                   </select></td>
             </tr>
             <tr>
@@ -236,6 +239,8 @@ limitations under the License. -->
     </div>
 
 	<div class="container mt-4">
+                <p class="lead">Enter any name below and click play button. </a></p>
+              </div>
 	<table class="table table-bordered">
         <tr>
                 <th>Employee Name:</th>
