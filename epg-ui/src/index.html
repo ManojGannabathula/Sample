@@ -158,7 +158,7 @@ limitations under the License. -->
           <div class="row">
               <div class="col-12">
                 <h1>Name Pronunciation Demo</h1>
-                <p class="lead">This site provides a demo of Name Pronounciation. Clicking on any cell in below table plays the pronounciation. </a></p>
+                <p class="lead">This site provides a demo of Name Pronounciation. Clicking on any cell in below . </a></p>
               </div>
             
           </div>
@@ -169,8 +169,6 @@ limitations under the License. -->
           <col width="200">
           <col width="200">
           <col width="200">
-          <col width="200">
-
       <thead>
         <th><div class="contains-voicable-content epg-title d-flex justify-content-center"><span class="my-auto voicable-item">Employee ID</span></div></th>
         <th><div class="contains-voicable-content epg-title d-flex justify-content-center"><span class="my-auto voicable-item">First Name</span></div></th>
@@ -193,7 +191,7 @@ limitations under the License. -->
                     <input type="text" id="employee-name" value="Manoj" class="form-control" id="session-key">
                 </td>
             </tr>
-            <tr>
+            <tr style="display: none;">
                 <th>get-speech-service Endpoint:</th>
                 <td>
                     <input type="text" id="get-speech-service-api-endpoint" value="https://api.epg-text-to-speech.demos.maynard.io/getSpeech" class="form-control" id="session-key">
@@ -216,18 +214,18 @@ limitations under the License. -->
                     <option value="neutral">neutral</option>
                   </select></td>
             </tr>
-            <tr>
+            <tr style="display: none;">
                 <th>Session Key:</th>
                 <td>
                     <input type="text" class="form-control" id="session-key">
                     <small class="text-muted">Session Key is optional, and prevents you from retrieving another users cached results when testing.</small>
                 </td>
             </tr>
-            <tr>
+            <tr style="display: none;">
               <th>Audio File URL:</th>
               <td><a id="debug-audio-file-url" href=""></a></td>
             </tr>
-            <tr>
+            <tr style="display: none;">
                 <th>Audio File Cached:</th>
                 <td id="debug-audio-file-cached"></td>
             </tr>
