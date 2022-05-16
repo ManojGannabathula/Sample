@@ -40,7 +40,7 @@ limitations under the License. -->
 			  var tblRow = "<tr>" + "<td>" + f.id + "</td>" +
 			   "<td>" + f.firstname + "</td>" + "<td>" + f.lastname + "</td>" + "<td>" + f.preferredname + "</td>"
 			   + "<td>" + "<button>Edit</button>" + "   " + "<button>Delete</button>" + "</td>" + "</tr>";
-			   $(tblRow).appendTo(".leadstable tbody");
+			   $(tblRow).appendTo(".leadstable tbody"); });
                     },
                     'error': function (data, error) {
                         console.log("Error loading epg-items.json: " + error)
