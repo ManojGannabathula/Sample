@@ -158,7 +158,8 @@ limitations under the License. -->
           <div class="row">
               <div class="col-12">
                 <h1>Name Pronunciation Demo</h1>
-                <p class="lead">This site provides a demo of Name Pronounciation. Clicking on any cell in below . </a></p>
+                <p class="lead">This site provides a demo of Name Pronounciation. Clicking on any cell in below table will play audio pronounciation. Voice language and Voice 
+			gender can based selected from the dropdown options. </a></p>
               </div>
             
           </div>
@@ -182,15 +183,7 @@ limitations under the License. -->
       <div class="container mt-4">
 
         <table class="table table-bordered">
-            <tr>
-                <th colspan="2"><center><button id="target">  Click here to test </button></center></th>
-            </tr>
-			<tr>
-                <th>Employee Name:</th>
-                <td>
-                    <input type="text" id="employee-name" value="Manoj" class="form-control" id="session-key">
-                </td>
-            </tr>
+            
             <tr style="display: none;">
                 <th>get-speech-service Endpoint:</th>
                 <td>
@@ -239,10 +232,20 @@ limitations under the License. -->
               </td>
             </tr>
           </table>
-      
-         
- 
+      	 
     </div>
+
+	<div class="container mt-4">
+	<table class="table table-bordered">
+        <tr>
+                <th>Employee Name:</th>
+                <td>
+                    <input type="text" id="employee-name" value="Manoj" class="form-control" id="session-key">
+                </td>
+		<td><input type="button" class="target" id="click" value="Play" > </td>
+        </tr>
+	</table>
+	</div>
  
 
 
