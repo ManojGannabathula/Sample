@@ -36,6 +36,11 @@ limitations under the License. -->
                     'dataType': "json",
                     'success': function (data) {
                         epgItems = data;
+			 $.each(data.employees, function(i, f) {
+			  var tblRow = "<tr>" + "<td>" + f.id + "</td>" +
+			   "<td>" + f.firstname + "</td>" + "<td>" + f.lastname + "</td>" + "<td>" + f.preferredname + "</td>"
+			   + "<td>" + "<button>Edit</button>" + "   " + "<button>Delete</button>" + "</td>" + "</tr>";
+			   $(tblRow).appendTo(".leadstable tbody");
                     },
                     'error': function (data, error) {
                         console.log("Error loading epg-items.json: " + error)
@@ -165,6 +170,24 @@ limitations under the License. -->
             
           </div>
       </div>
+
+      <table class="leadstable" border="2" align="center">
+          <col width="100">
+          <col width="200">
+          <col width="200">
+          <col width="200">
+          <col width="200">
+
+      <thead>
+        <th>Employee ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Preferred Name</th>
+        <th>Action</th>
+      </thead>
+      <tbody id="tdata">
+      </tbody>
+      </table>
 
       <!--
 	  <div class="container reduced-margin mt-4">
